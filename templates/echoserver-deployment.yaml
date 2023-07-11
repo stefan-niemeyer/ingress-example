@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: echoserver
+  labels:
+    {{- include "ingress-example.labels" $ | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: echoserver
+  template:
+    metadata:
+      labels:
+        run: echoserver
+    spec:
+      containers:
+        - name: echoserver
+          image: ealen/echo-server:0.7.0
+          env:
+            - name: PORT
+              value: {{ .Values.services.echoserver.servicePort | quote }}
+          ports:
+            - name: http
+              {{- (printf "containerPort: %d" (.Values.services.echoserver.servicePort | int)) | nindent 14 }}

@@ -1,0 +1,20 @@
+{{- range .Values.colors }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: html-{{ . }}-cm
+  labels:
+    {{- include "ingress-example.labels" $ | nindent 4 }}
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>{{ . | camelcase }} Page</title>
+    </head>
+    <body>
+    <h1 style="background: {{ . }}; color: white">Hello from {{ . | camelcase }} Deployment!</h1>
+    </body>
+    </html>
+{{- end }}

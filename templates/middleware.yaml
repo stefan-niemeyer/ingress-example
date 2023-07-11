@@ -1,0 +1,19 @@
+{{- if .Values.ingress.enabled }}
+{{- if eq .Values.ingress.controller "traefik" }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: ingress-example-stripprefix
+  labels:
+    {{- include "ingress-example.labels" $ | nindent 4 }}
+spec:
+  stripPrefix:
+    prefixes:
+{{- range $key, $value := .Values.services }}
+  {{- if not $value.keepPrefix }}
+      - {{ $value.prefix | quote }}
+  {{- end }}
+{{- end }}
+    forceSlash: false
+{{- end }}
+{{- end }}

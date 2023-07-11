@@ -1,0 +1,5 @@
+{{- if .Values.ingress.enabled }}
+{{- range $key, $value := .Values.services }}
+{{include "ingress-example.ingress" (dict "global" $ "key" $key "service" $value) }}
+{{- end }}
+{{- end }}
