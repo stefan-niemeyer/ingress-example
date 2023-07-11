@@ -35,7 +35,7 @@ spec:
             allowPrivilegeEscalation: false
             privileged: false
             runAsNonRoot: true
-            {{- if ($.Values.nginxRunAsUser | default false) }}
+            {{- if not (empty $.Values.nginxRunAsUser) }}
             runAsUser: {{ $.Values.nginxRunAsUser }}
             {{- end }}
       volumes:

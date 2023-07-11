@@ -1,0 +1,15 @@
+# Default values for ingress-example.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+createNamespace: false
+
+nginxRunAsUser: null
+
+ingress:
+  enabled: true
+  controller: haproxy-openshift
+  host: bluegreen-test.apps.nonprod.ocp.vkbads.de
+  # settings for OpenShift
+  tls:
+    - {}
+
