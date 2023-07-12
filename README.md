@@ -31,7 +31,14 @@ The ingress controllers are configured to route the traffic to the correct servi
 
 The link in the square named LOCAL redirects to `/base-blue` and ends up at the `base` application because there is no special ingress for that path. 
 
-# Supported ingress controllers
+## Installation
+```shell
+helm upgrade --namespace ingress-example --install ingress-example .
+# or if you want to install it in the current namespace
+helm upgrade --install ingress-example .
+```
+
+## Supported ingress controllers
 This repositroy supports the following ingress controllers:
 - [Traefik](https://traefik.io/)
 - [NGINX Ingress Controller](https://docs.nginx.com/nginx-ingress-controller/)
