@@ -10,35 +10,30 @@ data:
     <html>
     <head>
         <title>5 Squares</title>
-        <style type="text/css">
+        <style>
             .square {
                 width: 100px;
                 height: 100px;
                 margin: 20px;
                 float: left;
                 cursor: pointer;
+                display: grid;
+                align-items: center;
+                justify-items: center;
+                font-family: Ubuntu, sans-serif;
             }
             .red { background-color: red; }
-            .green { background-color: green; }
+            .orange { background-color: orange; }
+            .yellow { background-color: yellow }
+            .green { background-color: green; color: white }
             .blue { background-color: blue; color: white }
-            .black { background-color: black; color: white }
         </style>
     </head>
     <body>
     <div class="square red" onclick="window.location.href='/red'">RED</div>
-    <div class="square green" onclick="window.location.href='/green'">GREEN</div>
-    <div class="square blue" onclick="window.location.href='/blue'">BLUE</div>
-    <div class="square black" onclick="window.location.href='/echo'">ECHO</div>
-    <div class="square black" onclick="window.location.href='/local.html'">LOCAL</div>
-    </body>
-    </html>
-  local.html: |
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Local Page</title>
-    </head>
-    <body>
-    <h1>Hello from Base Deployment!</h1>
+    <div class="square orange" onclick="window.location.href='/orange'">ORANGE</div>
+    <div class="square yellow" onclick="window.location.href='/yellow'">YELLOW</div>
+    <div class="square green" onclick="window.location.href='/echo'">ECHO</div>
+    <div class="square blue" onclick="window.location.href='/base-blue'">LOCAL</div>
     </body>
     </html>

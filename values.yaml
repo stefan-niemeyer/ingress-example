@@ -1,20 +1,19 @@
 # Default values for ingress-example.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-createNamespace: true
-
 colors:
   - red
+  - orange
+  - yellow
   - blue
-  - green
 
 defaultServicePort: 8080
 
 nginxDeployments:
   - name: base
   - name: red
-  - name: green
-  - name: blue
+  - name: orange
+  - name: yellow
 
 nginxRunAsUser: 65534
 
@@ -26,17 +25,16 @@ services:
   nginx-red:
     serviceName: "nginx-red"
     prefix: "/red"
-  nginx-green:
-    serviceName: "nginx-green"
-    prefix: "/green"
-  nginx-blue:
-    serviceName: "nginx-blue"
-    prefix: "/blue"
+  nginx-orange:
+    serviceName: "nginx-orange"
+    prefix: "/orange"
+  nginx-yellow:
+    serviceName: "nginx-yellow"
+    prefix: "/yellow"
   echoserver:
     serviceName: "echoserver"
     prefix: "/echo"
     servicePort: 8090
-
 
 ingress:
   enabled: true
@@ -45,12 +43,8 @@ ingress:
   #controller: kubernetes-nginx
   #controller: haproxy-openshift
   #controller: dummy
-  host: bluegreen.laserschwert.io
+  host: ingress-example.laserschwert.io
   tls:
     - hosts:
-        - bluegreen.laserschwert.io
-      secretName: laserschwert-io-tls
-  # settings for OpenShift
-#  tls:
-#    - {}
-
+        - ingress-example.laserschwert.io
+      secretName: laserschwert-io-tls       # secret w/ TLS certificate

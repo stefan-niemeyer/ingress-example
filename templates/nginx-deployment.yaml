@@ -23,8 +23,14 @@ spec:
             - name: http
               containerPort: {{ $.Values.defaultServicePort }}
           volumeMounts:
-            - name: config-volume
-              mountPath: "/usr/share/nginx/html"
+            - name: nginx-html-volume
+              mountPath: "/usr/share/nginx/html/index.html"
+              subPath: "index.html"
+            {{- if eq .name "base" }}
+            - name: nginx-html-blue-volume
+              mountPath: "/usr/share/nginx/html/base-blue/index.html"
+              subPath: "index.html"
+            {{- end }}
             - name: nginx-conf-volume
               mountPath: "/etc/nginx/nginx.conf"
               subPath: nginx.conf
@@ -39,9 +45,14 @@ spec:
             runAsUser: {{ $.Values.nginxRunAsUser }}
             {{- end }}
       volumes:
-        - name: config-volume
+        - name: nginx-html-volume
           configMap:
             name: html-{{ .name }}-cm
+        {{- if eq .name "base" }}
+        - name: nginx-html-blue-volume
+          configMap:
+            name: html-blue-cm
+        {{- end }}
         - name: nginx-conf-volume
           configMap:
             name: nginx-conf

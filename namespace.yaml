@@ -1,8 +1,6 @@
-{{- if .Values.createNamespace | default false }}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ .Release.Namespace }}
+  name: ingress-example
   labels:
     cert-manager-laserschwert-io-tls: laserschwert-io    # Define namespace label for kubed
-{{- end }}

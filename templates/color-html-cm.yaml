@@ -12,9 +12,17 @@ data:
     <html>
     <head>
         <title>{{ . | camelcase }} Page</title>
+        <style>
+            h1 {
+                text-align: center;
+                background: {{ . }};
+                color: {{ if eq . "yellow" }}black{{ else }}white{{ end }};
+                font-family: Ubuntu, sans-serif;
+            }
+        </style>
     </head>
     <body>
-    <h1 style="background: {{ . }}; color: white">Hello from {{ . | camelcase }} Deployment!</h1>
+    <h1>Hello from {{ . | camelcase }} Deployment!</h1>
     </body>
     </html>
 {{- end }}

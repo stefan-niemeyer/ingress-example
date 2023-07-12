@@ -8,8 +8,7 @@ nginxRunAsUser: null
 ingress:
   enabled: true
   controller: haproxy-openshift
-  host: bluegreen-test.apps.nonprod.ocp.vkbads.de
+  host: ingress-example-test.apps.nonprod.ocp.vkbads.de
   # settings for OpenShift
   tls:
     - {}
-
